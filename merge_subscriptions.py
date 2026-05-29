@@ -50,7 +50,7 @@ def merge_subscriptions(sources: List[Dict[str, Any]]) -> Dict[str, Any]:
     merged = {
         "id": 999001,
         "name": "GKD增强订阅（合并版）",
-        "version": 1,
+        "version": 2,
         "author": "Community Merge",
         "mergeInfo": {
             "description": "此订阅由多个订阅合并而成",
