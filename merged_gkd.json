@@ -8,7 +8,8 @@
     "sources": [
       {
         "author": "AIsouler",
-        "file": "aisouler_gkd.json5"
+        "file": "aisouler_gkd.json5",
+        "priority": 30
       }
     ]
   },

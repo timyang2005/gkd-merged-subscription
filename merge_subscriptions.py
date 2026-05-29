@@ -11,21 +11,25 @@ SUBSCRIPTION_SOURCES = [
         "name": "奥怪的 GKD 订阅",
         "author": "aoguai",
         "url": "https://registry.npmmirror.com/@aoguai/subscription/latest/files/dist/gkd.json5",
+        "priority": 10,
     },
     {
         "name": "甘霖的 GKD 订阅",
         "author": "ganlinte",
         "url": "https://registry.npmmirror.com/@ganlinte/gkd-subscription/latest/files/dist/gkd.json5",
+        "priority": 20,
     },
     {
         "name": "AIsouler 的订阅",
         "author": "AIsouler",
         "url": "https://registry.npmmirror.com/@aisouler/gkd_subscription/latest/files/dist/AIsouler_gkd.json5",
+        "priority": 30,
     },
     {
         "name": "gujiwuqing 的订阅",
         "author": "gujiwuqing",
         "url": "https://registry.npmmirror.com/@gujiwuqing/gkd_subscription/latest/files/dist/gkd.json5",
+        "priority": 40,
     },
 ]
 
@@ -58,18 +62,21 @@ def merge_subscriptions(sources: List[Dict[str, Any]]) -> Dict[str, Any]:
     }
 
     apps_map: Dict[str, Dict] = {}
+    apps_priority: Dict[str, int] = {}
     categories_map: Dict[int, Dict] = {}
     global_groups_map: Dict[int, Dict] = {}
     rule_count = 0
 
     for source in sources:
         try:
-            print(f"Processing: {source['name']} by {source['author']}")
+            source_priority = source.get("priority", 0)
+            print(f"Processing: {source['name']} by {source['author']} (priority: {source_priority})")
             sub = fetch_subscription(source["url"])
 
             merged["mergeInfo"]["sources"].append({
                 "author": source["author"],
-                "file": f"{source['author'].lower()}_gkd.json5"
+                "file": f"{source['author'].lower()}_gkd.json5",
+                "priority": source_priority
             })
 
             # 合并 categories（去重）
@@ -85,19 +92,31 @@ def merge_subscriptions(sources: List[Dict[str, Any]]) -> Dict[str, Any]:
                     global_groups_map[key] = gg
                 rule_count += len(gg.get("rules", []))
 
-            # 合并 apps（去重）
+            # 合并 apps（去重，保留优先级更高的源的配置）
             for app in sub.get("apps", []):
                 app_id = app["id"]
+                
                 if app_id not in apps_map:
+                    # 新 app，直接添加
                     apps_map[app_id] = app
-                else:
-                    # 合并 groups
+                    apps_priority[app_id] = source_priority
+                elif source_priority > apps_priority[app_id]:
+                    # 发现更高优先级的源有这个 app，替换并重新合并 groups
                     existing_groups = {g["key"]: g for g in apps_map[app_id].get("groups", [])}
                     for group in app.get("groups", []):
                         if group["key"] not in existing_groups:
                             existing_groups[group["key"]] = group
-                        rule_count += len(group.get("rules", []))
+                    apps_map[app_id] = app
                     apps_map[app_id]["groups"] = list(existing_groups.values())
+                    apps_priority[app_id] = source_priority
+                else:
+                    # 保留原有 app，合并新的 groups
+                    existing_groups = {g["key"]: g for g in apps_map[app_id].get("groups", [])}
+                    for group in app.get("groups", []):
+                        if group["key"] not in existing_groups:
+                            existing_groups[group["key"]] = group
+                    apps_map[app_id]["groups"] = list(existing_groups.values())
+                
                 rule_count += sum(len(g.get("rules", [])) for g in app.get("groups", []))
 
         except Exception as e:

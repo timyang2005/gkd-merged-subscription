@@ -9,6 +9,7 @@
       {
         author: "AIsouler",
         file: "aisouler_gkd.json5",
+        priority: 30,
       },
     ],
   },
