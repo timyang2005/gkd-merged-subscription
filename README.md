@@ -9,8 +9,8 @@
 | 订阅名称 | GKD增强订阅（合并版） |
 | 订阅 ID | 999001 |
 | 文件大小 | 1.7 MB |
-| Apps 数量 | 816 个 |
-| 规则数量 | 34,805 条 |
+| Apps 数量 | 886 个 |
+| 规则数量 | 4,829 条 |
 
 ## 🔗 导入链接
 
@@ -44,19 +44,16 @@ https://raw.gitmirror.com/timyang2005/gkd-merged-subscription/main/merged_gkd.js
 
 ## 📋 合并来源
 
-本订阅合并了以下 4 个仍在维护的优质订阅：
+本订阅合并了以下仍在维护的优质订阅：
 
-| 订阅名称 | 作者 | 原始 Apps 数 | 状态 |
-|---------|------|-------------|------|
-| 奥怪的 GKD 订阅 | aoguai | 72 | ✅ 维护中 |
-| 甘霖的 GKD 订阅 | ganlinte | 607 | ✅ 维护中 |
-| 梦念逍遥の订阅 | 梦念逍遥 | 285 | ✅ 维护中 |
-| Mrlc 的订阅 | Mrlc | 689 | ✅ 维护中 |
+| 订阅名称 | 作者 | 状态 |
+|---------|------|------|
+| AIsouler 的订阅 | AIsouler | ✅ 维护中 |
 
 **合并后统计：**
-- ✅ 去重后共 **816** 个 Apps
-- ✅ 共 **2,048** 个 Groups
-- ✅ 共 **34,805** 条规则
+- ✅ 去重后共 **886** 个 Apps
+- ✅ 共 **2,077** 个 Groups
+- ✅ 共 **4,829** 条规则
 
 ## 🚀 使用步骤
 
@@ -112,10 +109,7 @@ https://raw.gitmirror.com/timyang2005/gkd-merged-subscription/main/merged_gkd.js
 ## 🙏 致谢
 
 感谢以下订阅作者的辛勤维护：
-- [aoguai](https://github.com/aoguai/subscription) - 奥怪的 GKD 订阅
-- [ganlinte](https://github.com/ganlinte/GKD-subscription) - 甘霖的 GKD 订阅  
-- [梦念逍遥](https://github.com/MengNianxiaoyao/gkd-subscription) - 梦念逍遥の订阅
-- [Mrlc](https://github.com/mrlctate/gkd-mrlc) - Mrlc 的订阅
+- [AIsouler](https://github.com/AIsouler/GKD_subscription) - AIsouler 的 GKD 订阅
 
 ---
 
