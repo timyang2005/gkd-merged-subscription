@@ -109,6 +109,10 @@ https://raw.gitmirror.com/timyang2005/gkd-merged-subscription/main/merged_gkd.js
 ## 🙏 致谢
 
 感谢以下订阅作者的辛勤维护：
+- [aoguai](https://github.com/aoguai/subscription) - 奥怪的 GKD 订阅
+- [ganlinte](https://github.com/ganlinte/GKD-subscription) - 甘霖的 GKD 订阅
+- [梦念逍遥](https://github.com/MengNianxiaoyao/gkd-subscription) - 梦念逍遥の订阅
+- [Mrlc](https://github.com/mrlctate/gkd-mrlc) - Mrlc 的订阅
 - [AIsouler](https://github.com/AIsouler/GKD_subscription) - AIsouler 的 GKD 订阅
 
 ---
